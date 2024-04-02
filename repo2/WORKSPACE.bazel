@@ -1,0 +1,5 @@
+new_local_repository(
+    name = "repo1",
+    build_file = "//:BUILD.bazel",
+    path = "../repo1",
+)

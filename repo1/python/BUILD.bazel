@@ -1,0 +1,12 @@
+# Using rules_py will fail `bazel test ...` in repo2:
+# load("@aspect_rules_py//py:defs.bzl", "py_library")
+load("@rules_python//python:defs.bzl", "py_library")
+
+py_library(
+    name = "foo_lib",
+    srcs = ["foo.py"],
+    # imports is needed with rules_python, it is default with rules_py.
+    # Unfortunately with rules_py it does not "properly cross repos".
+    imports = ["."],
+    visibility = ["//visibility:public"],
+)
